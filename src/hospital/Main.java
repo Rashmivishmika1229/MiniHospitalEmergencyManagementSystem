@@ -1,64 +1,92 @@
 package hospital;
 
 public class Main {
+    public static void main(String[] args) {
 
-        public static void main(String[] args) {
+        Patient patient = new Patient(
+                105,
+                "John Silva",
+                45,
+                "0771234567",
+                "Chest Pain"
+        );
 
-                TreatmentStack treatmentStack = new TreatmentStack();
+        VisitHistory history = patient.getVisitHistory();
 
-                TreatmentRecord treatment1 = new TreatmentRecord(
-                                201,
-                                "Amal Perera",
-                                "Medication",
-                                "Dr. Silva");
+        Visit visit1 = new Visit(
+                301,
+                "2026-09-01",
+                "Dr. Silva",
+                "Chest Pain",
+                "Medication"
+        );
 
-                TreatmentRecord treatment2 = new TreatmentRecord(
-                                202,
-                                "Kamal Silva",
-                                "Emergency Surgery",
-                                "Dr. Fernando");
+        Visit visit2 = new Visit(
+                302,
+                "2026-09-02",
+                "Dr. Fernando",
+                "High Blood Pressure",
+                "Blood Pressure Treatment"
+        );
 
-                TreatmentRecord treatment3 = new TreatmentRecord(
-                                203,
-                                "Nimal Fernando",
-                                "Fracture Treatment",
-                                "Dr. Perera");
+        Visit visit3 = new Visit(
+                303,
+                "2026-09-03",
+                "Dr. Perera",
+                "Follow-up",
+                "Routine Check-up"
+        );
 
-                System.out.println("Adding completed treatments:");
-                System.out.println("----------------------------");
+        System.out.println("Adding patient visits:");
+        System.out.println("----------------------");
 
-                treatmentStack.push(treatment1);
-                treatmentStack.push(treatment2);
-                treatmentStack.push(treatment3);
+        history.addVisit(visit1);
+        history.addVisit(visit2);
+        history.addVisit(visit3);
 
-                System.out.println();
+        System.out.println();
 
-                treatmentStack.displayStack();
+        history.displayHistory();
 
-                System.out.println("\nPop operation:");
-                System.out.println("--------------");
+        System.out.println("\nSearching for Visit ID 302:");
+        System.out.println("---------------------------");
 
-                TreatmentRecord removedRecord = treatmentStack.pop();
+        Visit foundVisit = history.searchVisit(302);
 
-                if (removedRecord != null) {
-                        System.out.println("Most recently completed treatment:");
-                        removedRecord.displayTreatment();
-                }
-
-                System.out.println("\nStack after pop:");
-                System.out.println("----------------");
-
-                treatmentStack.displayStack();
-
-                System.out.println("\nRemoving remaining treatment records:");
-                System.out.println("-------------------------------------");
-
-                treatmentStack.pop();
-                treatmentStack.pop();
-
-                System.out.println("\nTrying to pop from an empty stack:");
-                System.out.println("----------------------------------");
-
-                treatmentStack.pop();
+        if (foundVisit != null) {
+            foundVisit.displayVisit();
+        } else {
+            System.out.println("Visit not found.");
         }
+
+        System.out.println("\nSearching for Visit ID 999:");
+        System.out.println("---------------------------");
+
+        foundVisit = history.searchVisit(999);
+
+        if (foundVisit != null) {
+            foundVisit.displayVisit();
+        } else {
+            System.out.println("Visit not found.");
+        }
+
+        System.out.println("\nRemoving Visit ID 302:");
+        System.out.println("----------------------");
+
+        history.removeVisit(302);
+
+        System.out.println();
+
+        history.displayHistory();
+
+        System.out.println("\nRemoving remaining visits:");
+        System.out.println("-------------------------");
+
+        history.removeVisit(301);
+        history.removeVisit(303);
+
+        System.out.println();
+
+        history.displayHistory();
+    }
 }

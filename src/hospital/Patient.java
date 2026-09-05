@@ -3,26 +3,31 @@ package hospital;
 public class Patient {
 
     private int patientId;
-    private String patientName;
+    private String name;
     private int age;
     private String contactNumber;
     private String medicalCondition;
 
-    public Patient(int patientId, String patientName, int age,
+    private VisitHistory visitHistory;
+
+    public Patient(int patientId, String name, int age,
                    String contactNumber, String medicalCondition) {
+
         this.patientId = patientId;
-        this.patientName = patientName;
+        this.name = name;
         this.age = age;
         this.contactNumber = contactNumber;
         this.medicalCondition = medicalCondition;
+
+        this.visitHistory = new VisitHistory();
     }
 
     public int getPatientId() {
         return patientId;
     }
 
-    public String getPatientName() {
-        return patientName;
+    public String getName() {
+        return name;
     }
 
     public int getAge() {
@@ -37,9 +42,13 @@ public class Patient {
         return medicalCondition;
     }
 
+    public VisitHistory getVisitHistory() {
+        return visitHistory;
+    }
+
     public void displayPatient() {
         System.out.println("Patient ID: " + patientId);
-        System.out.println("Name: " + patientName);
+        System.out.println("Name: " + name);
         System.out.println("Age: " + age);
         System.out.println("Contact Number: " + contactNumber);
         System.out.println("Medical Condition: " + medicalCondition);
