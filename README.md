@@ -1,57 +1,79 @@
-# Mini Hospital Emergency Management System
-
-## Project Overview
-
-This project is a console-based Mini Hospital Emergency Management System developed using Java.
-
-The system simulates the management of patients arriving at a hospital emergency unit. It demonstrates the use of different data structures to manage patient records, emergency patients, treatment history, and previous patient visits.
-
-## Data Structures Used
-
-- Binary Search Tree (BST) - Patient Records
-- Queue - Emergency Patient Management
-- Stack - Treatment History
-- Singly Linked List - Patient Visit History
-
-## Main Features
-
-- Register and manage patient records
-- Search patients using Patient ID
-- Delete patient records
-- Display patients in ascending Patient ID order
-- Manage emergency patients using FIFO queue
-- Serve emergency patients in the order they arrive
-- Store completed treatments using LIFO stack
-- Remove the most recently completed treatment
-- Manage individual patient visit histories
-- Add, remove, search, and display previous visits
-- Interactive console menu for system operations
-
-## Technologies
-
-- Java
-- Visual Studio Code
-- Git
-- GitHub
-
 ## Project Structure
 
+    MiniHospitalEmergencyManagementSystem/
+    │
+    ├── src/
+    │   └── hospital/
+    │       ├── Main.java
+    │       ├── Patient.java
+    │       ├── PatientNode.java
+    │       ├── PatientBST.java
+    │       ├── PatientQueueNode.java
+    │       ├── EmergencyQueue.java
+    │       ├── TreatmentRecord.java
+    │       ├── TreatmentStackNode.java
+    │       ├── TreatmentStack.java
+    │       ├── Visit.java
+    │       ├── VisitNode.java
+    │       └── VisitHistory.java
+    │
+    └── README.md
 
-MiniHospitalEmergencyManagementSystem/
-|
-├── src/
-│   └── hospital/
-│       ├── Main.java
-│       ├── Patient.java
-│       ├── PatientNode.java
-│       ├── PatientBST.java
-│       ├── PatientQueueNode.java
-│       ├── EmergencyQueue.java
-│       ├── TreatmentRecord.java
-│       ├── TreatmentStackNode.java
-│       ├── TreatmentStack.java
-│       ├── Visit.java
-│       ├── VisitNode.java
-│       └── VisitHistory.java
-|
-└── README.md
+## How to Run
+
+1. Open the project folder in Visual Studio Code.
+2. Open the terminal.
+3. Compile the Java files:
+
+       javac -d out src/hospital/*.java
+
+4. Run the program:
+
+       java -cp out hospital.Main
+
+## System Operations
+
+### Patient Records - Binary Search Tree
+
+- Add a new patient
+- Search for a patient using Patient ID
+- Delete a patient using Patient ID
+- Display patients in ascending Patient ID order
+
+### Emergency Patient Queue - Queue
+
+- Add patients to the emergency queue
+- Serve patients in FIFO order
+- Display patients currently waiting
+- Handle an empty queue
+
+### Treatment History - Stack
+
+- Add completed treatment records
+- Remove the most recently completed treatment
+- Display treatment history
+- Handle an empty stack
+
+### Patient Visit History - Singly Linked List
+
+- Add a patient visit
+- Search for a visit using Visit ID
+- Remove a visit using Visit ID
+- Display previous visits
+
+## Testing
+
+The system was tested for:
+
+- Patient insertion
+- Patient searching
+- Patient deletion
+- BST traversal
+- Emergency queue FIFO operation
+- Treatment stack LIFO operation
+- Patient visit addition
+- Patient visit searching
+- Patient visit removal
+- Patient visit display
+- Empty queue handling
+- Empty stack handling
