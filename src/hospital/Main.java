@@ -2,35 +2,54 @@ package hospital;
 
 public class Main {
 
-    public static void main(String[] args) {
+        public static void main(String[] args) {
 
-        PatientBST patientBST = new PatientBST();
+                EmergencyQueue emergencyQueue = new EmergencyQueue();
 
-        Patient patient1 = new Patient(
-                105, "John Silva", 45, "0771234567", "Chest Pain");
+                Patient patient1 = new Patient(
+                                201, "Amal Perera", 30, "0771111111", "Fever");
 
-        Patient patient2 = new Patient(
-                101, "Nimal Perera", 32, "0712345678", "Fever");
+                Patient patient2 = new Patient(
+                                202, "Kamal Silva", 45, "0772222222", "Chest Pain");
 
-        Patient patient3 = new Patient(
-                110, "Kamal Fernando", 60, "0756789012", "Diabetes");
+                Patient patient3 = new Patient(
+                                203, "Nimal Fernando", 55, "0773333333", "Fracture");
 
-        patientBST.insert(patient1);
-        patientBST.insert(patient2);
-        patientBST.insert(patient3);
+                System.out.println("Adding patients to emergency queue:");
+                System.out.println("------------------------------------");
 
-        System.out.println("Patients before deletion:");
-        System.out.println("-------------------------");
-        patientBST.displayInOrder();
+                emergencyQueue.enqueue(patient1);
+                emergencyQueue.enqueue(patient2);
+                emergencyQueue.enqueue(patient3);
 
-        System.out.println("\nDeleting Patient ID 105:");
-        patientBST.delete(105);
+                System.out.println();
 
-        System.out.println("\nPatients after deletion:");
-        System.out.println("------------------------");
-        patientBST.displayInOrder();
+                emergencyQueue.displayQueue();
 
-        System.out.println("\nTrying to delete Patient ID 999:");
-        patientBST.delete(999);
-    }
+                System.out.println("\nDequeue operation:");
+                System.out.println("------------------");
+
+                Patient treatedPatient = emergencyQueue.dequeue();
+
+                if (treatedPatient != null) {
+                        System.out.println("Patient removed for treatment:");
+                        treatedPatient.displayPatient();
+                }
+
+                System.out.println("\nQueue after dequeue:");
+                System.out.println("--------------------");
+
+                emergencyQueue.displayQueue();
+
+                System.out.println("\nRemoving remaining patients:");
+                System.out.println("----------------------------");
+
+                emergencyQueue.dequeue();
+                emergencyQueue.dequeue();
+
+                System.out.println("\nTrying to dequeue from an empty queue:");
+                System.out.println("---------------------------------------");
+
+                emergencyQueue.dequeue();
+        }
 }
