@@ -4,52 +4,61 @@ public class Main {
 
         public static void main(String[] args) {
 
-                EmergencyQueue emergencyQueue = new EmergencyQueue();
+                TreatmentStack treatmentStack = new TreatmentStack();
 
-                Patient patient1 = new Patient(
-                                201, "Amal Perera", 30, "0771111111", "Fever");
+                TreatmentRecord treatment1 = new TreatmentRecord(
+                                201,
+                                "Amal Perera",
+                                "Medication",
+                                "Dr. Silva");
 
-                Patient patient2 = new Patient(
-                                202, "Kamal Silva", 45, "0772222222", "Chest Pain");
+                TreatmentRecord treatment2 = new TreatmentRecord(
+                                202,
+                                "Kamal Silva",
+                                "Emergency Surgery",
+                                "Dr. Fernando");
 
-                Patient patient3 = new Patient(
-                                203, "Nimal Fernando", 55, "0773333333", "Fracture");
+                TreatmentRecord treatment3 = new TreatmentRecord(
+                                203,
+                                "Nimal Fernando",
+                                "Fracture Treatment",
+                                "Dr. Perera");
 
-                System.out.println("Adding patients to emergency queue:");
-                System.out.println("------------------------------------");
+                System.out.println("Adding completed treatments:");
+                System.out.println("----------------------------");
 
-                emergencyQueue.enqueue(patient1);
-                emergencyQueue.enqueue(patient2);
-                emergencyQueue.enqueue(patient3);
+                treatmentStack.push(treatment1);
+                treatmentStack.push(treatment2);
+                treatmentStack.push(treatment3);
 
                 System.out.println();
 
-                emergencyQueue.displayQueue();
+                treatmentStack.displayStack();
 
-                System.out.println("\nDequeue operation:");
-                System.out.println("------------------");
+                System.out.println("\nPop operation:");
+                System.out.println("--------------");
 
-                Patient treatedPatient = emergencyQueue.dequeue();
+                TreatmentRecord removedRecord = treatmentStack.pop();
 
-                if (treatedPatient != null) {
-                        System.out.println("Patient removed for treatment:");
-                        treatedPatient.displayPatient();
+                if (removedRecord != null) {
+                        System.out.println("Most recently completed treatment:");
+                        removedRecord.displayTreatment();
                 }
 
-                System.out.println("\nQueue after dequeue:");
-                System.out.println("--------------------");
+                System.out.println("\nStack after pop:");
+                System.out.println("----------------");
 
-                emergencyQueue.displayQueue();
+                treatmentStack.displayStack();
 
-                System.out.println("\nRemoving remaining patients:");
-                System.out.println("----------------------------");
+                System.out.println("\nRemoving remaining treatment records:");
+                System.out.println("-------------------------------------");
 
-                emergencyQueue.dequeue();
-                emergencyQueue.dequeue();
+                treatmentStack.pop();
+                treatmentStack.pop();
 
-                System.out.println("\nTrying to dequeue from an empty queue:");
-                System.out.println("---------------------------------------");
+                System.out.println("\nTrying to pop from an empty stack:");
+                System.out.println("----------------------------------");
 
-                emergencyQueue.dequeue();
+                treatmentStack.pop();
         }
 }
