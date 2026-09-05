@@ -19,9 +19,18 @@ public class Main {
         patientBST.insert(patient2);
         patientBST.insert(patient3);
 
-        System.out.println("Patients in ascending order of Patient ID:");
-        System.out.println("----------------------------------------");
-
+        System.out.println("Patients before deletion:");
+        System.out.println("-------------------------");
         patientBST.displayInOrder();
+
+        System.out.println("\nDeleting Patient ID 105:");
+        patientBST.delete(105);
+
+        System.out.println("\nPatients after deletion:");
+        System.out.println("------------------------");
+        patientBST.displayInOrder();
+
+        System.out.println("\nTrying to delete Patient ID 999:");
+        patientBST.delete(999);
     }
 }
